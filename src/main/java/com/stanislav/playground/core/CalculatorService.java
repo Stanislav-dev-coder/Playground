@@ -1,34 +1,16 @@
 package com.stanislav.playground.core;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class CalculatorService {
 
-    private final int a;
-    private final int b;
-    private int result;
-
-    public CalculatorService(int a, int b, int result) {
-        this.a = a;
-        this.b = b;
-        this.result = result;
+    public Integer sum(Integer a, Integer b){
+        return a + b;
     }
 
-    public int getFirsrt(){
-        return a;
+    public Integer multiply(Integer a, Integer b){
+        return a * b;
     }
 
-    public int getSecond(){
-        return b;
-    }
-
-    public int getSum(){
-        return  result = a + b;
-    }
-
-    public int getPr(){
-        return  result = a + b;
-    }
-
-    public int getPart(){
-        return  result = a + b;
-    }
 }
