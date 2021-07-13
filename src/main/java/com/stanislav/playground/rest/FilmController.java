@@ -13,7 +13,7 @@ import java.util.Optional;
 Запрос на все фильмы - complete
 Запрос на добавление фильма - POST - complete
 Запрос на удаление фильма - DELETE - complete
-Запрос на изменение фильма - PUT
+Запрос на изменение фильма - PUT - complete
 Запрос на один фильм - GET - complete
  */
 
@@ -52,8 +52,9 @@ public class FilmController {
         return ResponseEntity.ok(result);
     }
 
-//    @PutMapping
-//    public  ResponseEntity<Film> editFilm(){
-//
-//    }
+    @PutMapping("/edit/{id}")
+    public  ResponseEntity<Optional<Film>> editFilm(@PathVariable(name = "id") Long Id, @RequestBody Film film){
+        Optional<Film> result = filmService.editFilm(Id, film);
+        return ResponseEntity.ok(result);
+    }
 }

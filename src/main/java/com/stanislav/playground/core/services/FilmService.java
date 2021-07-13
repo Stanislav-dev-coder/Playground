@@ -50,16 +50,17 @@ public class FilmService {
                 });
     }
 
-//    public Optional<Film> editFilm(Long Id, Film film){
-//        Optional<Film> result = filmRepository.findById(Id);
-//        return result
-//                .map(entity -> {
-//                    entity.setName(film.getName());
-//                    entity.setGenre(film.getGenre());
-//                    entity.setYear(film.getYear());
-//                    entity.setDirector(film.getDirector());
-//                    entity.setIMDB((film.getIMDB()));
-//                });
-//    }
+    public Optional<Film> editFilm(Long Id, Film film){
+        Optional<Film> result = filmRepository.findById(Id);
+        return result
+                .map(entity -> {
+                    entity.setName(film.getName());
+                    entity.setGenre(film.getGenre());
+                    entity.setYear(film.getYear());
+                    entity.setDirector(film.getDirector());
+                    entity.setIMDB((film.getIMDB()));
+                    return filmRepository.save(entity);
+                });
+    }
 
 }
