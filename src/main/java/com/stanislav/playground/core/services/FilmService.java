@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class FilmService {
@@ -22,5 +23,43 @@ public class FilmService {
         var result = filmRepository.findAll();
         return result;
     }
+
+    public Optional<Film> findByName(String name){
+        var result = filmRepository.findByName(name);
+        return result;
+    }
+
+    public Film saveFilm(Film film){
+        Film newEntity = new Film();
+        long generateId = new Random().nextLong();
+        newEntity.setId(generateId);
+        newEntity.setName(film.getName());
+        newEntity.setGenre(film.getGenre());
+        newEntity.setYear(film.getYear());
+        newEntity.setDirector(film.getDirector());
+        newEntity.setIMDB(film.getIMDB());
+        return filmRepository.save(newEntity);
+    }
+
+    public Optional<Boolean> delFilm(Long Id){
+        Optional<Film> result = filmRepository.findById(Id);
+        return result
+                .map(film -> {
+                    filmRepository.deleteById(Id);
+                    return true;
+                });
+    }
+
+//    public Optional<Film> editFilm(Long Id, Film film){
+//        Optional<Film> result = filmRepository.findById(Id);
+//        return result
+//                .map(entity -> {
+//                    entity.setName(film.getName());
+//                    entity.setGenre(film.getGenre());
+//                    entity.setYear(film.getYear());
+//                    entity.setDirector(film.getDirector());
+//                    entity.setIMDB((film.getIMDB()));
+//                });
+//    }
 
 }
