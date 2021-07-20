@@ -17,6 +17,15 @@ import java.util.Optional;
 Запрос на один фильм - GET - complete
  */
 
+@CrossOrigin(allowedHeaders = {
+        "Access-Control-Allow-Origin",
+        "Access-Control-Allow-Headers",
+        "Access-Control-Allow-Methods",
+        "Content-Type"
+},
+        methods = { RequestMethod.POST,RequestMethod.OPTIONS, RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PUT })
+
+
 @RestController
 @RequestMapping(value = "/films")
 public class FilmController {

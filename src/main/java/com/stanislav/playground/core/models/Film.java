@@ -1,12 +1,13 @@
 package com.stanislav.playground.core.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "films")
 public class Film {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private String name;
     private String genre;

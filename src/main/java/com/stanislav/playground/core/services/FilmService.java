@@ -31,8 +31,6 @@ public class FilmService {
 
     public Film saveFilm(Film film){
         Film newEntity = new Film();
-        long generateId = new Random().nextLong();
-        newEntity.setId(generateId);
         newEntity.setName(film.getName());
         newEntity.setGenre(film.getGenre());
         newEntity.setYear(film.getYear());
